@@ -1,0 +1,28 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/css/style.css')
+  body
+    h1 Vintage Vinyl Records Collection
+    
+    a(href="/update-cobj") Add to this table
+    
+    table
+      thead
+        tr
+          th Name
+          th Artist
+          th Release Year
+          th Genre
+          th Condition
+          th ID (barcode)
+      tbody
+        each record in data
+          tr
+            td= record.properties.name
+            td= record.properties.artist
+            td= record.properties.releaseyear
+            td= record.properties.genre
+            td= record.properties.condition
+            td= record.properties.id
