@@ -20,19 +20,15 @@ app.get('/', async (req, res) => {
     };
 
     try {
-        console.log('Calling HubSpot API...');
         const resp = await axios.get(`${vinylRecordsEndpoint}?properties=name,artist,release_year,genre,condition,id`, { headers });
-        console.log('API Response:', JSON.stringify(resp.data, null, 2));
         
         const data = resp.data.results;
-        console.log('Data being sent to template:', JSON.stringify(data, null, 2));
         
         res.render('homepage', { 
             title: 'Vintage Vinyl Records | Integrating With HubSpot I Practicum', 
             data 
         });      
     } catch (error) {
-        console.error('Error details:', error.response ? error.response.data : error.message);
         res.status(500).send('Error fetching vinyl records data');
     }
 });
@@ -65,11 +61,9 @@ app.post('/update-cobj', async (req, res) => {
     };
     
     try {
-        console.log('Creating new record:', JSON.stringify(newRecord, null, 2));
         await axios.post(vinylRecordsEndpoint, newRecord, { headers });
         res.redirect('/');
     } catch (error) {
-        console.error('Error details:', error.response ? error.response.data : error.message);
         res.status(500).send('Error creating new vinyl record');
     }
 });
