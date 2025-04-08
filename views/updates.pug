@@ -1,0 +1,43 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/css/style.css')
+  body
+    h1 Add New Vinyl Record
+    
+    a(href="/") Return to the homepage
+    
+    form(action="/update-cobj", method="POST")
+      div.form-group
+        label(for="name") Name:
+        input(type="text", id="name", name="name", required)
+      
+      div.form-group
+        label(for="artist") Artist:
+        input(type="text", id="artist", name="artist", required)
+      
+      div.form-group
+        label(for="release_year") Release Year:
+        input(type="number", id="release_year", name="release_year", required)
+      
+      div.form-group
+        label(for="genre") Genre:
+        input(type="text", id="genre", name="genre", required)
+      
+      div.form-group
+        label(for="condition") Condition:
+        select(id="condition", name="condition", required)
+          option(value="") Select condition...
+          option(value="mint") Mint
+          option(value="near_mint") Near Mint
+          option(value="very_good") Very Good
+          option(value="good") Good
+          option(value="fair") Fair
+          option(value="poor") Poor
+      
+      div.form-group
+        label(for="id") ID (Code barre):
+        input(type="text", id="id", name="id", required)
+      
+      button(type="submit") Add Record
